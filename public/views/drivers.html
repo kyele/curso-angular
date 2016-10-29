@@ -1,0 +1,34 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3>Pilotos de la Championship F1</h3>
+	</div>
+	<div class="panel-body">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th class="text-center">Posición</th>
+					<th class="text-center">Nacionalidad y Nombre</th>
+					<th class="text-center">Patrocinador</th>
+					<th class="text-center">Puntos</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="driver in driversList">
+					<td class="text-center">
+						{{ $index + 1 }}
+					</td>
+					<td class="text-center">
+						<img src="public/image/flags/{{ driver.nationality }}.png" alt="">
+						{{ driver.driver.givenName }}
+					</td>
+					<td class="text-center">
+						{{ driver.constructor[0].name }}
+					</td>
+					<td class="text-center">
+						{{ driver.points }}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
