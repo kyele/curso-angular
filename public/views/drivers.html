@@ -3,6 +3,12 @@
 		<h3>Pilotos de la Championship F1</h3>
 	</div>
 	<div class="panel-body">
+		<div class="input-group" class="col-xs-12">
+		  	<input type="text" class="form-control" aria-label="..." ng-model="search.position">
+		  	<div class="input-group-btn">
+		  		<button type="button" class="btn btn-default" aria-label="Help"><span class="glyphicon glyphicon-search"></span></button>
+		  	</div>
+		</div>
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -10,25 +16,46 @@
 					<th class="text-center">Nacionalidad y Nombre</th>
 					<th class="text-center">Patrocinador</th>
 					<th class="text-center">Puntos</th>
+					<th class="text-center">Detalles</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="driver in driversList">
+				<tr ng-repeat="driver in pilot.driversList | filter: search : position">
 					<td class="text-center">
-						{{ $index + 1 }}
+						{{ driver.position }}
 					</td>
 					<td class="text-center">
-						<img src="public/image/flags/{{ driver.nationality }}.png" alt="">
-						{{ driver.driver.givenName }}
+						<img src="public/image/flags/{{ driver.Driver.nationality }}.png" alt="">
+						{{ driver.Driver.givenName }}
 					</td>
 					<td class="text-center">
-						{{ driver.constructor[0].name }}
+						<a href="{{ driver.Constructors[0].url }}" target="_blank">
+							{{ driver.Constructors[0].name }}
+						</a>
 					</td>
 					<td class="text-center">
 						{{ driver.points }}
 					</td>
+					<td class="text-center">
+						<button 
+							type="button" 
+							class="btn btn-default" 
+							aria-label="Help" 
+							ng-click="pilot.details( driver.Driver.driverId )">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</td>
 				</tr>
 			</tbody>
 		</table>
+		<div ui-view>
+		</div>
+		<!-- <h1>El mejor piloto es {{ pilot.nombre }}</h1>
+		<div ng-controller="carCtrl as car">
+			<h1>El mejor Auto de la F1 es el {{ car.nombre }}, y su dueño es {{ pilot.nombre }}</h1>
+			<div ng-controller="reafactionCtrl as item">
+				<h1>El auto {{ car.nombre }} es el mejor gracias a sus {{ item.nombre }} de gran calidad. Y su piloto {{ pilot.nombre }} sabe cuidarlas.</h1>
+			</div>
+		</div> -->
 	</div>
 </div>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<!--<base href="/curso-angularjs/">-->
 	<meta charset="UTF-8">
 	<title>APP RACES</title>
 	
@@ -39,9 +40,12 @@
 			</div>			
 		</nav>
 	</header>
-
-	<main class="container" ui-view>
-		
+	<section ng-init="nombre = 'ejemplo'">
+		<input type="text" ng-model="nombre">
+		<h1 ng-show="nombre.length > 3">
+		</h1>
+	</section>
+	<main class="container" ui-view>		
 	</main>
 
 	<!-- Insert Jquery -->
@@ -52,9 +56,14 @@
 	<script src="bower_components/angular/angular.js"></script>
 	<!-- Insert Angular ui-router (layaout manager) -->
 	<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+	<!-- Insert Angular sanitize -->
+	<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 	<!-- Inject my app -->
 	<script src="public/js/app.js"></script>
 	<!-- Controllers Angular-->
 	<script src="public/js/controllers/drivers.controllers.js"></script>
+	<!-- Services Angular-->
+	<script src="public/js/services/drivers.services.js"></script>
+
 </body>
 </html>
